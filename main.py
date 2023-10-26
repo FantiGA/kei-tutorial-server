@@ -6,8 +6,8 @@ LastEditors: fantiga
 FilePath: /kei-tutorial/server/main.py
 """
 
-from typing import List
 from fastapi import Body, Depends, FastAPI, Path
+from typing import List
 from fastapi.exceptions import RequestValidationError, ResponseValidationError
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
