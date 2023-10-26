@@ -6,6 +6,7 @@ LastEditors: fantiga
 FilePath: /kei-tutorial/server/main.py
 """
 
+from typing import List
 from fastapi import Body, Depends, FastAPI, Path
 from fastapi.exceptions import RequestValidationError, ResponseValidationError
 from fastapi.responses import JSONResponse
@@ -71,7 +72,7 @@ def get_db():
 
 
 # 获取棋局列表
-@app.get("/game_list", response_model=list[schemas.Game])
+@app.get("/game_list", response_model=List[schemas.Game])
 async def getGameList(db: Session = Depends(get_db)):
     return crud.get_games(db)
 
@@ -89,7 +90,7 @@ async def getNextGame(game_id: int = Path(...), db: Session = Depends(get_db)):
 
 
 # 获取记录列表
-@app.get("/record_list", response_model=list[schemas.Record])
+@app.get("/record_list", response_model=List[schemas.Record])
 async def getRecordList(db: Session = Depends(get_db)):
     return crud.get_records(db)
 
